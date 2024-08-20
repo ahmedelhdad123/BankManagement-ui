@@ -1,0 +1,60 @@
+/* Profile Card Styling */
+.profile-card {
+  background: linear-gradient(135deg, #f0f4f8, #ffffff); /* Subtle gradient background */
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 30px 20px;
+  font-family: 'Arial', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
+}
+
+/* Header Styling */
+.header {
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 32px; /* Larger font for prominence */
+  color: #007bff; /* Bootstrap's primary color */
+  font-weight: 700;
+}
+
+/* Profile Details */
+.profile-header p {
+  font-size: 18px;
+  margin: 20px 0;
+  color: #444; /* Darker grey for better contrast */
+  line-height: 1.6; /* Increased line height for readability */
+}
+
+.profile-header p span.label {
+  font-weight: bold;
+  color: #007bff; /* Use primary color for labels */
+  margin-right: 10px; /* Space between label and value */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-card {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .header h1 {
+    font-size: 26px;
+  }
+
+  .profile-header p {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,36 @@
+<div class="container d-flex justify-content-end">
+  <button class="btn btn-outline-primary rounded-pill mt-5 px-5 py-2 shadow-sm" (click)="addNewCardNumber()">+ Add New Card</button>
+</div>
+
+<div *ngFor="let account of accounts" class="account-card my-5 shadow-sm rounded">
+  <div class="account-header">
+    <h2>Account Details</h2>
+  </div>
+  <div class="account-body">
+    <p><strong>Card Number:</strong> {{ account.cardNumber }}</p>
+    <p><strong>CVV:</strong> {{ account.cvv }}</p>
+    <p><strong>Balance:</strong> ${{ account.balance.toFixed(2) }}</p>
+
+    <h3>Transactions</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of account.transactions">
+          <td>{{ transaction.timestamp }}</td>
+          <td>{{ transaction.type }}</td>
+          <td [ngClass]="{ 'text-danger': transaction.amount < 0 }">
+            ${{ transaction.amount.toFixed(2) }}
+          </td>
+          <td>{{ transaction.notes }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

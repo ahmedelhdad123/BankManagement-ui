@@ -1,0 +1,49 @@
+<div class="register-page d-flex justify-content-center align-items-center">
+  <form class="register-form p-5 rounded-4 shadow-lg" [formGroup]="registerForm" (ngSubmit)="submitRegisterForm()">
+    <p class="form-title text-center fw-bold fs-3 mb-4">Create Your Account</p>
+
+    <div class="mb-4">
+      <label class="form-label fs-6 fw-semibold">Full Name</label>
+      <input type="text" formControlName="name" class="form-control form-control-lg" id="name">
+      <div class="error-message mt-2" *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
+        <p *ngIf="registerForm.get('name')?.errors?.['required']">Name is required</p>
+        <p *ngIf="registerForm.get('name')?.errors?.['minlength']">Name must be at least 15 characters</p>
+        <p *ngIf="registerForm.get('name')?.errors?.['maxlength']">Name cannot exceed 60 characters</p>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label for="exampleInputEmail1" class="form-label fs-6 fw-semibold">Email Address</label>
+      <input type="email" formControlName="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="example@gmail.com" aria-describedby="emailHelp">
+      <div class="error-message mt-2" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+        <p *ngIf="registerForm.get('email')?.errors?.['required']">Email is required</p>
+        <p *ngIf="registerForm.get('email')?.errors?.['email']">Please enter a valid email</p>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label for="phone" class="form-label fs-6 fw-semibold">Phone Number</label>
+      <input type="text" formControlName="phone" class="form-control form-control-lg" id="phone">
+      <div class="error-message mt-2" *ngIf="registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched">
+        <p *ngIf="registerForm.get('phone')?.errors?.['required']">Phone number is required</p>
+        <p *ngIf="registerForm.get('phone')?.errors?.['minlength']">Phone number must be exactly 11 digits</p>
+        <p *ngIf="registerForm.get('phone')?.errors?.['maxlength']">Phone number cannot exceed 11 digits</p>
+        <p *ngIf="registerForm.get('phone')?.errors?.['pattern']">Phone number must start with 012, 010, 011, or 015</p>
+      </div>
+    </div>
+
+    <div class="mb-4">
+      <label for="exampleInputPassword1" class="form-label fs-6 fw-semibold">Password</label>
+      <input type="password" formControlName="password" class="form-control form-control-lg" id="exampleInputPassword1">
+      <div class="error-message mt-2" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+        <p *ngIf="registerForm.get('password')?.errors?.['required']">Password is required</p>
+      </div>
+    </div>
+
+    <button [disabled]="registerForm.invalid" type="submit" class="btn btn-primary w-100 fs-5">
+      <span *ngIf="!is_loading">Sign Up</span> 
+      <i *ngIf="is_loading" class="fas fa-spinner fa-spin"></i>
+    </button>
+    <div *ngIf="error" class="alert alert-danger mt-4">{{ error }}</div>
+  </form>
+</div>

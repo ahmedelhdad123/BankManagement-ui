@@ -1,0 +1,86 @@
+/* Button styling */
+.btn-outline-primary {
+  font-size: 1.1rem;
+  border: 2px solid #007bff; /* Solid border */
+  color: #007bff; /* Primary color text */
+  background-color: transparent; /* Transparent background */
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #007bff; /* Fill background on hover */
+  color: #ffffff; /* White text on hover */
+  box-shadow: 0 0.5rem 1rem rgba(0, 123, 255, 0.2); /* Soft shadow on hover */
+}
+
+/* Account card styling */
+.account-card {
+  width: 85%;
+  margin: 0 auto;
+  border-radius: 15px; /* Rounded corners */
+  background-color: #f7f7f7; /* Light grey background */
+  border: 1px solid #e0e0e0; /* Soft border */
+  overflow: hidden;
+}
+
+/* Account header styling */
+.account-header {
+  background-color: #343a40; /* Dark header background */
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 1.25rem; /* Slightly larger font */
+  border-bottom: 3px solid #007bff; /* Accent color border */
+}
+
+/* Account body styling */
+.account-body {
+  padding: 20px;
+  color: #495057; /* Medium grey text */
+}
+
+.account-body p {
+  margin-bottom: 0.75rem; /* Spacing between paragraphs */
+}
+
+/* Table styling */
+.table {
+  margin-top: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table th {
+  background-color: #e9ecef; /* Soft grey header */
+  font-weight: 600; /* Bold text in header */
+  color: #343a40; /* Dark grey text */
+}
+
+.table td {
+  background-color: #ffffff;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f2f2f2; /* Light grey stripes */
+}
+
+/* Negative amounts styling */
+.text-danger {
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .account-card {
+    width: 100%;
+  }
+
+  .btn-outline-primary {
+    width: 100%;
+    text-align: center;
+  }
+
+  .table {
+    font-size: 0.9rem;
+  }
+}

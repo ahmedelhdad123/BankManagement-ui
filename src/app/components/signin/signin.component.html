@@ -1,0 +1,45 @@
+<form [formGroup]="loginForm" class="login-form-container p-5" (ngSubmit)="submitLogin()">
+  <div class="text-center mb-4" *ngIf="is_loading">
+    <i class="fas fa-spinner fa-spin fa-2x"></i>
+  </div>
+
+  <p class="form-title text-center fw-bold fs-3 mb-4">Welcome My Friend</p>
+
+  <div class="mb-4">
+    <label for="email" class="form-label fs-6 fw-semibold">Email Address</label>
+    <input
+      type="email"
+      formControlName="email"
+      class="form-control form-control-lg"
+      id="email"
+      placeholder="example@gmail.com"
+      aria-describedby="emailHelp">
+
+    <div class="error-message mt-2" *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched">
+      <p *ngIf="loginForm.get('email')?.getError('required')">Email is required</p>
+      <p *ngIf="loginForm.get('email')?.getError('email')">Please enter a valid email</p>
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <label for="password" class="form-label fs-6 fw-semibold">Password</label>
+    <input
+      type="password"
+      formControlName="password"
+      class="form-control form-control-lg"
+      id="password"
+      placeholder="Enter your password">
+
+    <div class="error-message mt-2" *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched">
+      <p *ngIf="loginForm.get('password')?.getError('required')">Password is required</p>
+      <p *ngIf="loginForm.get('password')?.getError('minlength')">Password must be at least 8 characters long</p>
+    </div>
+  </div>
+
+  <button [disabled]="loginForm.invalid || is_loading" type="submit" class="btn btn-primary btn-lg w-100 fs-5">
+    <span *ngIf="!is_loading">Login</span> 
+    <i *ngIf="is_loading" class="fas fa-spinner fa-spin"></i>
+  </button>
+
+  <div *ngIf="error" class="alert alert-danger mt-4">{{ error }}</div>
+</form>
