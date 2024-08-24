@@ -12,14 +12,16 @@ import { TransactionService } from '../../services/transaction/transaction.servi
   standalone: true,
   imports: [
     CommonModule,
-    DepositModalComponent,   // Import here
-    WithdrawModalComponent   // Import here
+    DepositModalComponent,
+    WithdrawModalComponent,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
   accounts: any[] = [];
+  operationStatus: boolean | null = null;  
+  operationMessage: string = '';       
 
   constructor(
     private accountService: AccountService,
@@ -44,11 +46,11 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  addNewCardNumber() { 
+  addNewCardNumber() {
     this.accountService.addNewCardNumber().subscribe(
       (response) => {
         console.log('New card added:', response);
-        this.getAccountDetails(); // Fetch updated account details after adding a card
+        this.getAccountDetails(); 
       },
       (error) => {
         console.error('Error adding new card:', error);
@@ -59,24 +61,39 @@ export class HomeComponent implements OnInit {
   deposit(amount: number, cardNumber: string) {
     this.transactionService.deposit(amount, cardNumber).subscribe(
       (response) => {
-        console.log('Deposit successful:', response);
-        this.getAccountDetails();  // Refresh account details after deposit
+        this.operationStatus = true;
+        this.operationMessage = 'Deposit successful!';
+        this.getAccountDetails();
+        this.clearOperationMessage(); 
       },
       (error) => {
-        console.error('Error depositing:', error);
+        this.operationStatus = false;
+        this.operationMessage = 'Error during deposit. Please try again.';
+        this.clearOperationMessage();
       }
     );
   }
-  
+
   withdraw(amount: number, cardNumber: string, cvv: string) {
     this.transactionService.withdraw(amount, cardNumber, cvv).subscribe(
       (response) => {
-        console.log('Withdraw successful:', response);
-        this.getAccountDetails();  // Refresh account details after withdrawal
+        this.operationStatus = true;
+        this.operationMessage = 'Withdraw successful!';
+        this.getAccountDetails();
+        this.clearOperationMessage();
       },
       (error) => {
-        console.error('Error withdrawing:', error);
+        this.operationStatus = false;
+        this.operationMessage = 'Error during withdrawal. Please try again.';
+        this.clearOperationMessage();
       }
     );
-  }  
+  }
+
+  clearOperationMessage() {
+    setTimeout(() => {
+      this.operationStatus = null;
+      this.operationMessage = '';
+    }, 4000);  
+  }
 }
