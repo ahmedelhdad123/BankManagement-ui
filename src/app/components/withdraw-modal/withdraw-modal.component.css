@@ -1,0 +1,13 @@
+/* Custom styles for the withdraw modal */
+.modal-header {
+    border-bottom: 2px solid #fff; /* Add a white border at the bottom of the header */
+  }
+  
+  .modal-footer {
+    border-top: none; /* Remove the border at the top of the footer */
+  }
+  
+  .form-control:focus {
+    border-color: #0d6efd; /* Change the border color of the input fields when focused */
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); /* Add a shadow when focused */
+  }

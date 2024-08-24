@@ -13,14 +13,14 @@ export class ProfileComponent {
   user : any = [];
 
   constructor(
-    private profileServuce: ProfileService) {}
+    private profileService: ProfileService) {}
 
   ngOnInit(): void {
     this.getUserDetails()
   }
 
   getUserDetails(){
-    this.profileServuce.getUserDetails().subscribe(
+    this.profileService.getUserDetails().subscribe(
       (response) => {
         this.user= response.data;
         console.log('User Details form home:', this.user);

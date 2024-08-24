@@ -86,4 +86,20 @@
       box-shadow: inset 0 -0.5rem 1rem rgba(0, 0, 0, 0.1); 
       transition: all 0.3s ease; 
   }
+  /* Custom styles for the welcome modal */
+.modal-header {
+  border-bottom: 2px solid #fff; /* Add a white border at the bottom of the header */
+}
+
+.modal-footer {
+  border-top: none; /* Remove the border at the top of the footer */
+}
+
+.modal-body h2 {
+  font-weight: bold; /* Make the welcome message bold */
+}
+
+.modal-body p {
+  color: #6c757d; /* Lighten the color of the descriptive text */
+}
 }
