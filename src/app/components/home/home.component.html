@@ -2,6 +2,7 @@
   <button class="btn btn-outline-primary rounded-pill mt-5 px-5 py-2 shadow-sm" (click)="addNewCardNumber()">+ Add New Card</button>
   <button class="btn btn-outline-success rounded-pill mt-5 px-5 py-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#depositModal">Deposit</button>
   <button class="btn btn-outline-danger rounded-pill mt-5 px-5 py-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#withdrawModal">Withdraw</button>
+  <button class="btn btn-outline-danger rounded-pill mt-5 px-5 py-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#deleteAccount">Delete Account</button>
 </div>
 
 <!-- Operation Success or Error Messages -->
@@ -17,6 +18,7 @@
 <!-- Deposit and Withdraw Modals -->
 <app-deposit-modal></app-deposit-modal>
 <app-withdraw-modal></app-withdraw-modal>
+<app-delete-account></app-delete-account>
 
 <!-- Account Details Display -->
 <div *ngFor="let account of accounts" class="account-card my-5 shadow-sm rounded">

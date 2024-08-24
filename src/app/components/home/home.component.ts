@@ -2,18 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AccountService } from '../../services/account/account.service';
 import { AuthService } from '../../services/auth/auth.service';
-import { HttpClient } from '@angular/common/http';
+import { TransactionService } from '../../services/transaction/transaction.service';
 import { DepositModalComponent } from '../deposit-modal/deposit-modal.component';
 import { WithdrawModalComponent } from '../withdraw-modal/withdraw-modal.component';
-import { TransactionService } from '../../services/transaction/transaction.service';
+import { DeleteAccountComponent } from "../../delete-account/delete-account.component";
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     CommonModule,
+    FormsModule,
     DepositModalComponent,
     WithdrawModalComponent,
+    DeleteAccountComponent
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
@@ -26,8 +29,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private accountService: AccountService,
     private authService: AuthService,
-    private transactionService: TransactionService,
-    private http: HttpClient
+    private transactionService: TransactionService
   ) {}
 
   ngOnInit(): void {
@@ -88,6 +90,22 @@ export class HomeComponent implements OnInit {
         this.clearOperationMessage();
       }
     );
+  }
+
+  deleteAccount(cardNumber: string){
+    this.accountService.deleteAccount(cardNumber).subscribe(
+      (response) => {
+        this.operationStatus = true;
+        this.operationMessage = 'Deleted Account successful!';
+        this.getAccountDetails();
+        this.clearOperationMessage();
+      },
+      (error) => {
+        this.operationStatus = false;
+        this.operationMessage = 'Error during deletion. Please try again.';
+        this.clearOperationMessage();
+      }
+    )
   }
 
   clearOperationMessage() {

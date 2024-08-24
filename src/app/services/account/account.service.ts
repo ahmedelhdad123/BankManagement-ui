@@ -40,4 +40,16 @@ addNewCardNumber(): Observable<any> {
   return this.http.get(`${this.apiUrl}/addCard`, { headers });
 }
 
+deleteAccount(cardNumber: string): Observable<any> {
+  const token = this.authService.getToken();
+  if (!token) {
+    console.error('No token found!');
+    return throwError(() => new Error('No token found!'));
+  }
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  });
+  return this.http.delete(`${this.apiUrl}/${cardNumber}`, { headers });
+}
+
 }
