@@ -51,11 +51,17 @@ export class HomeComponent implements OnInit {
   addNewCardNumber() {
     this.accountService.addNewCardNumber().subscribe(
       (response) => {
-        console.log('New card added:', response);
-        this.getAccountDetails(); 
+        // console.log('New card added:', response);
+        this.operationStatus = true;
+        this.operationMessage = 'Account Added successful!';
+        this.getAccountDetails();
+        this.clearOperationMessage(); 
+
       },
       (error) => {
-        console.error('Error adding new card:', error);
+        this.operationStatus = false;
+        this.operationMessage = 'Error during Added Account. Please try again.';
+        this.clearOperationMessage();
       }
     );
   }
