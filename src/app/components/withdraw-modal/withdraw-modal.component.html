@@ -1,0 +1,30 @@
+<div class="modal fade" id="withdrawModal" tabindex="-1" aria-labelledby="withdrawModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="withdrawModalLabel">Withdraw</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="withdrawAmount" class="form-label">Amount</label>
+              <input type="number" class="form-control" id="withdrawAmount" required>
+            </div>
+            <div class="mb-3">
+              <label for="withdrawCardNumber" class="form-label">Card Number</label>
+              <input type="text" class="form-control" id="withdrawCardNumber" required>
+            </div>
+            <div class="mb-3">
+              <label for="withdrawCvv" class="form-label">CVV</label>
+              <input type="text" class="form-control" id="withdrawCvv" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="withdraw()">Withdraw</button>
+        </div>
+      </div>
+    </div>
+  </div>
